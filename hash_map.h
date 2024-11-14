@@ -45,7 +45,7 @@ unsigned int hash(const char *key, int size);
  *
  * @return A pointer to the newly created hash table
  */
-c_hash_map_table *hash_table_new(int size);
+c_hash_map_table *c_hash_table_new(int size);
 
 /**
  * @brief Check if a key exists in the hash table
@@ -56,7 +56,7 @@ c_hash_map_table *hash_table_new(int size);
  * @param key The key to look for
  * @return 1 if the key exists, 0 otherwise
  */
-int hash_table_has_key(c_hash_map_table *table, const char *key);
+int c_hash_table_has_key(c_hash_map_table *table, const char *key);
 
 /**
  * @brief Add a key-value pair to the hash table
@@ -67,6 +67,16 @@ int hash_table_has_key(c_hash_map_table *table, const char *key);
  *
  * @return {int} 0 if the key-value pair was added successfully, 1 if the key already exists
  */
-int hash_table_add(c_hash_map_table *table, const char *key, void *value);
+int c_hash_table_add(c_hash_map_table *table, const char *key, void *value);
+
+/**
+ * @brief Get the value associated with a key in the hash table
+ *
+ * @param {c_hash_map_table *} table The hash table to search
+ * @param {char *} key The key to search for
+ *
+ * @return {void *} The value associated with the key, or NULL if the key is not found
+ */
+void * c_hash_table_get(c_hash_map_table *table, const char *key);
 
 #endif //C_MAP_HASH_MAP_LIBRARY_H
