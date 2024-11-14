@@ -3,8 +3,8 @@ project(c_map C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_library(c_map STATIC cmap.c)
+add_library(c_hash_map STATIC hash_map.c)
 
 add_executable(main main.c)
 
-target_link_libraries(main c_map)
+target_link_libraries(main c_hash_map)
