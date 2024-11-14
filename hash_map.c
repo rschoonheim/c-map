@@ -2,23 +2,23 @@
 #include <stdlib.h>
 #include <string.h>
 
-unsigned int hash(const char *key) {
+unsigned int hash(const char *key, int size) {
     unsigned int hash = 0;
     while (*key) {
         hash = (hash << 5) + *key++;
     }
-    return hash % 1000;
+    return hash % size;
 }
 
 c_hash_map_table *hash_table_new(int size) {
     c_hash_map_table *table = malloc(sizeof(c_hash_map_table));
-    table->entries = calloc(1000, sizeof(c_hash_map_table_entry *));
+    table->entries = calloc(size, sizeof(c_hash_map_table_entry *));
     table->size = size;
     return table;
 }
 
 int hash_table_has_key(c_hash_map_table *table, const char *key) {
-    unsigned int index = hash(key);
+    unsigned int index = hash(key, table->size);
     c_hash_map_table_entry *entry = table->entries[index];
     while (entry) {
         if (strcmp(entry->key, key) == 0) {
@@ -30,7 +30,7 @@ int hash_table_has_key(c_hash_map_table *table, const char *key) {
 }
 
 int hash_table_add(c_hash_map_table *table, const char *key, void *value) {
-    unsigned int index = hash(key);
+    unsigned int index = hash(key, table->size);
     c_hash_map_table_entry *entry = table->entries[index];
 
     while (entry) {

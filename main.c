@@ -4,7 +4,7 @@
 
 int main() {
 
-  c_hash_map_table *table = hash_table_new();
+  c_hash_map_table *table = hash_table_new(500);
 
   int addResult = hash_table_add(table, "key", "value");
   printf("Add result: %d\n", addResult);

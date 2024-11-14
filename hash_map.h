@@ -23,7 +23,7 @@ typedef struct {
  */
 typedef struct {
     c_hash_map_table_entry **entries; /**< Array of pointers to the hash table entries */
-    int size
+    int size; /**< The size of the hash table */
 } c_hash_map_table;
 
 /**
@@ -32,9 +32,11 @@ typedef struct {
  * This function computes the hash value for a given key.
  *
  * @param key The key to hash
+ * @param size The size of the hash table
+ *
  * @return The computed hash value
  */
-unsigned int hash(const char *key);
+unsigned int hash(const char *key, int size);
 
 /**
  * @brief Create a new hash table
