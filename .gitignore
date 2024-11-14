@@ -1,0 +1,8 @@
+# IDE Related
+#
+.idea/
+.vscode/
+
+# Build Related
+#
+cmake-build-debug/
